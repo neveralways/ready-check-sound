@@ -1,15 +1,14 @@
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("READY_CHECK")
+frame:RegisterEvent("LFG_PROPOSAL_SHOW")
+frame:RegisterEvent("LFG_ROLE_CHECK_SHOW")
 
-local function fileExists(filePath)
-    local file = io.open(filePath, "r")
-    if file then
-        file:close()
-        return true
-    else
-        return false
-    end
+
+local function PlayDefaultSound(sound_id)
+    UnmuteSoundFile(sound_id)
+    PlaySoundFile(sound_id, "Master")
+    MuteSoundFile(sound_id)
 end
 
 frame:SetScript("OnEvent", function(self, event, addonName)
@@ -20,7 +19,11 @@ frame:SetScript("OnEvent", function(self, event, addonName)
         if PlaySoundFile(customSoundPath, "Master") then
             PlaySoundFile(customSoundPath, "Master")
         else
-            PlaySoundFile(567478, "Master")
+            PlayDefaultSound(567478)
         end
+    elseif event == "LFG_PROPOSAL_SHOW" then
+        PlayDefaultSound(567478)
+    elseif event == "LFG_ROLE_CHECK_SHOW" then
+        PlayDefaultSound(567478)
     end
 end)
