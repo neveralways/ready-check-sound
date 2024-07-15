@@ -1,0 +1,6 @@
+## Interface: 100207
+## Title: Ready Check Sound
+## Notes: Change the ready check sound
+## Author: Neveralways
+## Version: 1.0
+ReadyCheckSound.lua
