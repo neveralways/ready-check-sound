@@ -3,6 +3,7 @@ frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("READY_CHECK")
 frame:RegisterEvent("LFG_PROPOSAL_SHOW")
 frame:RegisterEvent("LFG_ROLE_CHECK_SHOW")
+frame:RegisterEvent("LFG_LIST_APPLICATION_STATUS_UPDATED")
 
 
 local function PlayDefaultSound(sound_id)
@@ -11,7 +12,7 @@ local function PlayDefaultSound(sound_id)
     MuteSoundFile(sound_id)
 end
 
-frame:SetScript("OnEvent", function(self, event, addonName)
+frame:SetScript("OnEvent", function(self, event, addonName, ...)
     if addonName == "ReadyCheckSound" then
         MuteSoundFile(567478)
     elseif event == "READY_CHECK" then
@@ -25,5 +26,10 @@ frame:SetScript("OnEvent", function(self, event, addonName)
         PlayDefaultSound(567478)
     elseif event == "LFG_ROLE_CHECK_SHOW" then
         PlayDefaultSound(567478)
+    elseif event == "LFG_LIST_APPLICATION_STATUS_UPDATED" then
+        local newStatus, oldStatus = ...
+        if newStatus == "invited" then
+            PlayDefaultSound(567478)
+        end
     end
 end)
