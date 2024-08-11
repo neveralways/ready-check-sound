@@ -1,0 +1,9 @@
+package-as: ReadyCheckSound
+
+enable-nolib-creation: no
+
+move-folders:
+  ReadyCheckSound/src: ReadyCheckSound
+
+ignore:
+  - README.md
