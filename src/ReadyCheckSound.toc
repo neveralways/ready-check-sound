@@ -1,4 +1,4 @@
-## Interface: 120005
+## Interface: 120100
 ## Title: Ready Check Sound
 ## Notes: Change the ready check sound.
 ## Author: Neveralways
